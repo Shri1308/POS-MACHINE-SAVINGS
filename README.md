@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>POS MDR Savings Calculator</title>
@@ -16,16 +15,18 @@
             padding: 20px 25px;
             border-radius: 10px;
             box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-            width: 320px;
+            width: 500px; /* Increased width */
         }
         h2 {
             text-align: center;
             margin-bottom: 15px;
+            color: #800000; /* Maroonish red */
         }
         label {
             margin-top: 10px;
             display: block;
             font-weight: bold;
+            color: #800000;
         }
         input, select, button {
             width: 100%;
@@ -36,33 +37,37 @@
             font-size: 14px;
         }
         button {
-            background: #4CAF50;
+            background: #800000; /* Maroonish red */
             color: white;
             font-size: 16px;
             margin-top: 15px;
             cursor: pointer;
         }
         button:hover {
-            background: #45a049;
+            background: #a52a2a;
         }
         .result {
             margin-top: 20px;
-            background: #e8f5e9;
+            background: #ffe6e6; /* Light red shade */
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
+            color: #800000;
+            white-space: nowrap; /* Keep results in one line */
+            overflow-x: auto; /* Scroll if content too long */
         }
     </style>
 </head>
 <body>
 
 <div class="calculator">
-    <h2>POS MDR Savings</h2>
+    <h2>SAVINGS WITH IDFC CURRENT ACCOUNT</h2>
 
     <label>Account Variant</label>
     <select id="variant">
         <option value="10">₹50K Variant (10%)</option>
         <option value="12">₹1Lac Variant (12%)</option>
+        <option value="15">₹2Lac Variant (15%)</option> <!-- New Variant -->
     </select>
 
     <label>Last Month UPI Collection (₹)</label>
@@ -87,28 +92,16 @@ function calculate() {
         return;
     }
 
-    // Free POS limit = (UPI × Variant %)
     let freeLimit = (upi * variantPercent) / 100;
-
-    // Amount chargeable under MDR after free limit
     let chargeableAmount = pos - freeLimit;
     if (chargeableAmount < 0) chargeableAmount = 0;
 
-    // Charges without program (1.5% of full POS)
     let withoutProgram = pos * 0.015;
-
-    // Charges with program (1.5% of amount above free limit)
     let withProgram = chargeableAmount * 0.015;
-
-    // Savings
     let savings = withoutProgram - withProgram;
 
-    document.getElementById("result").innerHTML = `
-        Free POS Limit: ₹${freeLimit.toFixed(2)}<br>
-        POS Charges Without Program: ₹${withoutProgram.toFixed(2)}<br>
-        POS Charges With Program: ₹${withProgram.toFixed(2)}<br>
-        💰 Possible Savings: ₹${savings.toFixed(2)}
-    `;
+    document.getElementById("result").innerHTML = 
+        `Free POS Limit: ₹${freeLimit.toFixed(2)} | POS Charges Without Program: ₹${withoutProgram.toFixed(2)} | POS Charges With Program: ₹${withProgram.toFixed(2)} | 💰 Possible Savings: ₹${savings.toFixed(2)}`;
 }
 </script>
 
