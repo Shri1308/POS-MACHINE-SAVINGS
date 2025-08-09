@@ -55,8 +55,8 @@
             color: #800000;
         }
         .line {
-            white-space: nowrap; /* Keep each part in single line */
-            overflow-x: auto;
+            white-space: nowrap; /* Prevent wrapping */
+            overflow-x: auto; /* Scroll if too long */
         }
     </style>
 </head>
@@ -104,7 +104,9 @@ function calculate() {
 
     document.getElementById("result").innerHTML = `
         <div class="line">Free POS Limit: ₹${freeLimit.toFixed(2)}</div>
-        <div class="line">POS Charges Without Program: ₹${withoutProgram.toFixed(2)} | POS Charges With Program: ₹${withProgram.toFixed(2)} | 💰 Possible Savings: ₹${savings.toFixed(2)}</div>
+        <div class="line">POS Charges Without Program: ₹${withoutProgram.toFixed(2)}</div>
+        <div class="line">POS Charges With Program: ₹${withProgram.toFixed(2)}</div>
+        <div class="line">💰 Possible Savings: ₹${savings.toFixed(2)}</div>
     `;
 }
 </script>
