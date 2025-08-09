@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>POS MDR Savings Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -8,38 +9,45 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
         }
         .calculator {
             background: #fff;
-            padding: 20px 25px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-            width: 500px; /* Increased width */
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
         }
         h2 {
             text-align: center;
             margin-bottom: 15px;
-            color: #800000; /* Maroonish red */
+            color: #800000;
+            font-size: 1.5em;
         }
         label {
             margin-top: 10px;
             display: block;
             font-weight: bold;
             color: #800000;
+            font-size: 1em;
         }
         input, select, button {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 1em;
+            box-sizing: border-box;
         }
         button {
-            background: #800000; /* Maroonish red */
+            background: #800000;
             color: white;
-            font-size: 16px;
+            font-size: 1.1em;
             margin-top: 15px;
             cursor: pointer;
         }
@@ -48,15 +56,25 @@
         }
         .result {
             margin-top: 20px;
-            background: #ffe6e6; /* Light red shade */
+            background: #ffe6e6;
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
             color: #800000;
         }
         .line {
-            white-space: nowrap; /* Prevent wrapping */
-            overflow-x: auto; /* Scroll if too long */
+            white-space: normal; /* allow wrapping on small screens */
+            word-break: break-word;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            h2 {
+                font-size: 1.3em;
+            }
+            input, select, button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
         }
     </style>
 </head>
